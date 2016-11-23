@@ -44,7 +44,7 @@ public class SeckillController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public  String list(Model model) {
         //获取列表页
-        List<Seckill> list = seckillService.getSeckillList();
+        List<Seckill> list = seckillService.getSeckillList(0, 10);
         model.addAttribute("list", list);
         //list.jsp + model = ModelAndView
         return "list";
@@ -70,41 +70,70 @@ public class SeckillController {
 
     }
 
+    /**
+     * 删除秒杀
+     * @param seckillId
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/{seckillId}/delete", method = RequestMethod.GET)
+    public String delete(@PathVariable("seckillId") Long seckillId, Model model) {
+        try {
+            if (seckillId == null) {
+                return "redirect:/seckill/list";
+            }
+            int count  = seckillService.deleteById(seckillId);
+            logger.info("删除的秒杀ID：" + seckillId + "操作状态：" + count);
+            if (count == 1) {
+                return "redirect:/seckill/list";
+            } else {
+                return "redirect:404";
+            }
+        } catch (Exception e) {
+            logger.error("删除失败", e.getMessage(),e);
+            return "redirect:/seckill/list";
+        }
+    }
 
 
-
-
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    /**
+     * 增加一条秒杀
+     * @param name
+     * @param number
+     * @param startTime
+     * @param endTime
+     * @return
+     */
+    @RequestMapping(value = "/add", method = RequestMethod.POST,
+            produces = {"application/json; charset=UTF-8"})
     public String insert(
             @RequestParam(value = "name", required = true) String name,
-            @RequestParam(value = "number", required = true) int number
+            @RequestParam(value = "number", required = true) int number,
+            @RequestParam(value = "startTime", required = true ) Date startTime,
+            @RequestParam(value = "endTime", required = true ) Date endTime
     ) {
         try {
-//            String username = result.get("username");
-            logger.info(name + number);
+            if (name != null && number != 0 && startTime != null && endTime != null) {
+                Seckill seckill = new Seckill();
+                seckill.setName(name);
+                seckill.setNumber(number);
+                seckill.setStartTime(startTime);
+                seckill.setEndTime(endTime);
+                seckill.setCreateTime(new Date());
+                int count = seckillService.insertSeckill(seckill);
+                logger.info("hello:" + count);
+                if (count == 1) {
+                    return "redirect:/seckill/list";
+                }else {
+                    return "add";
+                }
+            }else {
+                return "add";
+            }
         }catch (Exception e) {
             logger.info(e.getMessage(),e +">>>>>>");
+            return "add";
         }
-
-//        byte[] requestBody = requestEntity.getBody();
-//    public String insert(@ModelAttribute("name")  String name, @ModelAttribute("number") int number, @ModelAttribute("starttime") Date starttime, @ModelAttribute("endtime") Date endtime, BindingResult result) {
-//        if (name != null && number != 0 && starttime != null && endtime != null) {
-//            Seckill seckill = new Seckill();
-//            seckill.setName(name);
-//            seckill.setNumber(number);
-//            seckill.setStartTime(starttime);
-//            seckill.setEndTime(endtime);
-//            seckill.setCreateTime(new Date());
-//            if (seckillService.insertSeckill(seckill) == 1) {
-//                return "forward:/seckill/list";
-//            }else {
-//                return "add";
-//            }
-//        }else {
-//            return "add";
-//        }
-        return "add";
-
     }
 
 

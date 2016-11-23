@@ -29,16 +29,16 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="starttime" class="col-sm-2  control-label">秒杀开始时间：</label>
+                    <label for="startTime" class="col-sm-2  control-label">秒杀开始时间：</label>
                     <div class="col-sm-8">
-                        <input type="text"  class="form-control" name="startTime" id="starttime">
+                        <input type="text"  class="form-control" name="startTime" id="startTime">
                         <p class="help-block">开始时间需要大于当前时间并小于结束时间</p>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="endttime" class="col-sm-2  control-label">秒杀结束时间：</label>
+                    <label for="endTime" class="col-sm-2  control-label">秒杀结束时间：</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="endTime" id="endttime">
+                        <input type="text" class="form-control" name="endTime" id="endTime">
                         <p class="help-block">结束时间需要大于开始时间</p>
                     </div>
                 </div>
@@ -64,6 +64,6 @@
             <%----%>
         <%--});--%>
     <%--});--%>
-</script>
+<%--//</script>--%>
 </body>
 </html>

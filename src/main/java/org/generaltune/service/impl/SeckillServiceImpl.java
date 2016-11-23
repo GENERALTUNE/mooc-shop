@@ -41,12 +41,21 @@ public class SeckillServiceImpl implements SeckillService {
     //md5盐值字符串,用于混淆MD5
     private final String slat = "fsalfjsdljfldskjflkfdsjgioreofewe243242o3iosjdfo324214pj23423";
 
-    public List<Seckill> getSeckillList() {
-        return seckillDao.queryAll(0, 4);
+    public List<Seckill> getSeckillList(int offset, int limit) {
+        return seckillDao.queryAll(offset, limit);
     }
 
     public Seckill getById(long seckillId) {
         return seckillDao.queryById(seckillId);
+    }
+
+    /**
+     * 删除秒杀
+     * @param seckillId
+     * @return
+     */
+    public int deleteById(long seckillId) {
+        return seckillDao.deleteById(seckillId);
     }
 
     public Exposer exportSeckillUrl(long seckillId) {

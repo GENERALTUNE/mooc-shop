@@ -21,7 +21,7 @@ public interface SeckillService {
      * 查询所有秒杀记录
      * @return
      */
-    List<Seckill> getSeckillList();
+    List<Seckill> getSeckillList(int offset, int limit);
 
     /**
      * 查询单个秒杀记录
@@ -29,6 +29,13 @@ public interface SeckillService {
      * @return
      */
     Seckill getById(long seckillId);
+
+    /**
+     * 删除秒杀记录
+     * @param seckillId
+     * @return
+     */
+    int deleteById(long seckillId);
 
     /**
      * 秒杀开启是输出秒杀接口地址，

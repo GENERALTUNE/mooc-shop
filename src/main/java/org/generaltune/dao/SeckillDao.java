@@ -26,6 +26,13 @@ public interface SeckillDao {
     Seckill queryById(long seckillId);
 
     /**
+     *
+     * @param seckillId
+     * @return
+     */
+    int deleteById(long seckillId);
+
+    /**
      * 根据偏移量查询秒杀商品列表
      * @param offset
      * @param limit
@@ -41,5 +48,5 @@ public interface SeckillDao {
      * @param endTime
      * @return
      */
-    int insertSeckill(@Param("name") String name, @Param("number") int number, @Param("startTime") Date startTime, @Param("endTime")Date endTime);
+    int insertSeckill(@Param("name") String name, @Param("number") int number, @Param("startTime") Date startTime, @Param("endTime") Date endTime);
 }

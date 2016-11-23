@@ -18,6 +18,11 @@
         where seckill_id = #{seckillId}
     </select>
 
+    <delete id="deleteById" parameterType="long">
+        delete from seckill
+         where seckill_id = #{seckillId}
+    </delete>
+
     <select id="queryAll" resultType="Seckill">
       select seckill_id, name, number, start_time, end_time, create_time
       from seckill
@@ -25,7 +30,7 @@
       limit #{offset}, #{limit}
     </select>
     <insert id="insertSeckill" >
-        insert into seckill(name, number, start_time)
-        values(#{name}, #{number}, #{startTime})
+        insert into seckill(name, number, start_time, end_time)
+        values(#{name}, #{number}, #{startTime}, #{endTime})
     </insert>
 </mapper>

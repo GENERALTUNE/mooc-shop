@@ -36,7 +36,7 @@ public class SeckillServiceTest {
 
     @Test
     public void testGetSeckillList() throws Exception {
-        List<Seckill> list = seckillService.getSeckillList();
+        List<Seckill> list = seckillService.getSeckillList(0, 10);
         logger.info("list={}", list);
     }
 
