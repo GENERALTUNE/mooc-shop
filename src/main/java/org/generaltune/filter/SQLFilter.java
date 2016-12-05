@@ -1,5 +1,7 @@
 package org.generaltune.filter;
 
+import org.json.JSONObject;
+
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
