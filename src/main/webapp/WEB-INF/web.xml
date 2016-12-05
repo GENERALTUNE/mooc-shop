@@ -35,7 +35,20 @@
     <!--默认匹配所有的请求-->
     <url-pattern>/</url-pattern>
   </servlet-mapping>
-  
+
+
+  <filter>
+    <display-name>SQLFilter</display-name>
+    <filter-name>SQLFilter</filter-name>
+    <filter-class>org.generaltune.filter.SQLFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>SQLFilter</filter-name>
+    <url-pattern>/servlet/*</url-pattern>
+  </filter-mapping>
+  <filter>
+
+
   <filter>
     <filter-name>encodingFilter</filter-name>
     <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
