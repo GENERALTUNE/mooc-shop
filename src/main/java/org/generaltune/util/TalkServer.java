@@ -12,6 +12,41 @@ import java.net.Socket;
 public class TalkServer {
     public static void main(String args[]) {
 
+//        try {
+//            // 创建一个服务器ServerSocket，并指定端口号为5120
+//            ServerSocket mServerSocket = new ServerSocket(5120);
+//            // 等待客户端连接
+//            Socket socket = mServerSocket.accept();
+//            // 连接上客户端后，获取客户端输入流信息
+//            InputStream is = socket.getInputStream();
+//            // 通过获取缓冲数据方式来读取文本信息
+//            BufferedReader br = new BufferedReader(new InputStreamReader(is));
+//            // 获取文本信息
+//            String line;
+//            StringBuffer sb = new StringBuffer();
+//            while ((line = br.readLine()) != null) {
+//                sb.append(line);
+//            }
+//            System.out.println(sb.toString());
+//            socket.shutdownInput();
+//            // 收到客户端信息后，回复客户端信息
+//            OutputStream os = socket.getOutputStream();
+//            PrintWriter pw = new PrintWriter(os);
+//            pw.write("收到回复，我是服务端");
+//            pw.flush();
+//            // 关闭流通常放在finally中操作
+//            os.close();
+//            br.close();
+//            is.close();
+//            pw.close();
+//            socket.close();
+//            mServerSocket.close();
+//        } catch (IOException e) {
+//
+//            e.printStackTrace();
+//        }
+
+
         try{
             ServerSocket server = null;
             try{
