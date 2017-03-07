@@ -13,6 +13,7 @@ import org.generaltune.service.SeckillService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -109,8 +110,11 @@ public class SeckillController {
     public String insert(
             @RequestParam(value = "name", required = true) String name,
             @RequestParam(value = "number", required = true) int number,
-            @RequestParam(value = "startTime", required = true ) Date startTime,
-            @RequestParam(value = "endTime", required = true ) Date endTime
+            @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date startTime,
+            //yyyy-MM-dd HH:mm:ss
+//            @RequestParam(value = "startTime", required = true ) Date startTime,
+//            @RequestParam(value = "endTime", required = true ) Date endTime,
+            @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date endTime
     ) {
         try {
             if (name != null && number != 0 && startTime != null && endTime != null) {
