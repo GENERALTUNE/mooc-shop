@@ -1,0 +1,2 @@
+#set( $page_title = "this is the test page")
+$page_title
