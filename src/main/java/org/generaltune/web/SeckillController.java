@@ -151,6 +151,12 @@ public class SeckillController {
     }
 
     /**
+     * velocity 实验
+     */
+    @RequestMapping(value = "/template", method = RequestMethod.GET)
+    public String template() { return "template";}
+
+    /**
      * 暴露秒杀地址
      * @param seckillId
      * @return
