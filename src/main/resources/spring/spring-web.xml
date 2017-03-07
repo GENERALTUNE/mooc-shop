@@ -21,10 +21,14 @@
 
     <!--3:配置jsp 显示ViewResolve-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="order" value="1"/>
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
         <property name="prefix" value="/jsp/" />
         <property name="suffix" value=".jsp" />
     </bean>
+
+
+
     <!--设置文件上传的格式-->
     <!--<bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver">-->
     <!--</bean>-->
