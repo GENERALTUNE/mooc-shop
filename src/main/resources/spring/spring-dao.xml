@@ -67,39 +67,39 @@
 
     <!--hibernate 配置-->
     <!--<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">-->
-    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
-        <property name="dataSource" ref="myDataSource"/>
-        <property name="packagesToScan">
-            <list>
-                <value>org.generaltune.model</value>
-                <!--<value>org.generaltune.hdao</value>-->
-            </list>
-        </property>
-        <!--<property name="mappingResources">-->
+    <!--<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">-->
+        <!--<property name="dataSource" ref="myDataSource"/>-->
+        <!--<property name="packagesToScan">-->
             <!--<list>-->
-                <!--<value>product.hbm.xml</value>-->
+                <!--&lt;!&ndash;<value>org.generaltune.model</value>&ndash;&gt;-->
+                <!--&lt;!&ndash;<value>org.generaltune.hdao</value>&ndash;&gt;-->
             <!--</list>-->
         <!--</property>-->
-        <property name="hibernateProperties">
-            <props>
-                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+        <!--&lt;!&ndash;<property name="mappingResources">&ndash;&gt;-->
+            <!--&lt;!&ndash;<list>&ndash;&gt;-->
+                <!--&lt;!&ndash;<value>product.hbm.xml</value>&ndash;&gt;-->
+            <!--&lt;!&ndash;</list>&ndash;&gt;-->
+        <!--&lt;!&ndash;</property>&ndash;&gt;-->
+        <!--<property name="hibernateProperties">-->
+            <!--<props>-->
+                <!--<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>-->
+                <!--&lt;!&ndash;<prop key="hibernate.hbm2ddl.auto">update</prop>&ndash;&gt;-->
                 <!--<prop key="hibernate.hbm2ddl.auto">update</prop>-->
-                <prop key="hibernate.hbm2ddl.auto">create</prop>
-                <!--<prop key="current_session_context_class">org.springframework.orm.hibernate5.SpringSessionContext</prop>-->
-                <!--<prop key="hibernate.id.new_generator_mappings">false</prop>-->
-                <prop key="hibernate.show_sql">true</prop>
-                <prop key="hibernate.format_sql">true</prop>
-            </props>
-        </property>
-        <!--<property name="annotatedPackages"></property>-->
-    </bean>
-    <context:component-scan base-package="org.generaltune"/>
+                <!--&lt;!&ndash;<prop key="current_session_context_class">org.springframework.orm.hibernate5.SpringSessionContext</prop>&ndash;&gt;-->
+                <!--&lt;!&ndash;<prop key="hibernate.id.new_generator_mappings">false</prop>&ndash;&gt;-->
+                <!--<prop key="hibernate.show_sql">true</prop>-->
+                <!--<prop key="hibernate.format_sql">true</prop>-->
+            <!--</props>-->
+        <!--</property>-->
+        <!--&lt;!&ndash;<property name="annotatedPackages"></property>&ndash;&gt;-->
+    <!--</bean>-->
+    <!--<context:component-scan base-package="org.generaltune"/>-->
 
-    <bean id="transactionManager"
-          class="org.springframework.orm.hibernate5.HibernateTransactionManager">
-        <property name="sessionFactory" ref="sessionFactory"/>
-    </bean>
+    <!--<bean id="transactionManager"-->
+          <!--class="org.springframework.orm.hibernate5.HibernateTransactionManager">-->
+        <!--<property name="sessionFactory" ref="sessionFactory"/>-->
+    <!--</bean>-->
 
-    <tx:annotation-driven transaction-manager="transactionManager"/>
+    <!--<tx:annotation-driven transaction-manager="transactionManager"/>-->
 
 </beans>

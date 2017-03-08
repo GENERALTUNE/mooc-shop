@@ -20,7 +20,7 @@ import java.io.Serializable;
  *
  */
 @Repository("employeeDao")
-@Transactional
+//@Transactional
 public class EmployeeDaoImpl implements EmployeeDao {
 
     @Autowired

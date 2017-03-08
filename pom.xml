@@ -34,6 +34,12 @@
           <version>2.5</version>
       </dependency>
 
+      <!--<dependency>-->
+          <!--<groupId>org.aspectj</groupId>-->
+          <!--<artifactId>aspectjweaver</artifactId>-->
+          <!--<version>1.8.10</version>-->
+      <!--</dependency>-->
+
 
      <!--补全项目依赖-->
      <!--1:日志 java日志:slf4j,log4j,logback,common-logging slf4j 是规范/接口
@@ -181,6 +187,11 @@
           <artifactId>hibernate-core</artifactId>
           <version>5.2.8.Final</version>
       </dependency>
+      <!--<dependency>-->
+          <!--<groupId>org.hibernate</groupId>-->
+          <!--<artifactId>hibernate-entitymanager</artifactId>-->
+          <!--<version>5.2.8.Final</version>-->
+      <!--</dependency>-->
       <dependency>
           <groupId>dom4j</groupId>
           <artifactId>dom4j</artifactId>
