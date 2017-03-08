@@ -1,6 +1,8 @@
 package org.generaltune.dao;
 
+import org.generaltune.hdao.EmployeeDao;
 import org.generaltune.entity.Seckill;
+import org.generaltune.model.Employee;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -10,8 +12,6 @@ import javax.annotation.Resource;
 
 import java.util.Date;
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by zhumin on 2016/11/15.
@@ -26,6 +26,10 @@ public class SeckillDaoTest {
     //    注入实现类依赖
     @Resource
     private SeckillDao seckillDao;
+
+    @Resource
+    private EmployeeDao employeeDao;
+
     @Test
     public void testReduceNumber() throws Exception {
         Date killTime = new Date();
@@ -43,6 +47,17 @@ public class SeckillDaoTest {
          * 1000元秒杀iPhone6
          org.generaltune.entity.Seckill@4fdfa676
          */
+    }
+
+    @Test
+    public void testSave() throws Exception{
+        Employee employee = new Employee();
+        employee.setDesignation("中国上海");
+        employee.setFirstname("张飞");
+        employee.setLastname("燕人张翼德");
+        employee.setSalary(234);
+
+        employeeDao.save(employee);
     }
 
     @Test

@@ -9,6 +9,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 
@@ -18,7 +19,8 @@ import java.io.Serializable;
  * @see <a href="http://www.bytestree.com/">BytesTree</a>
  *
  */
-@Repository
+@Repository("employeeDao")
+@Transactional
 public class EmployeeDaoImpl implements EmployeeDao {
 
     @Autowired
