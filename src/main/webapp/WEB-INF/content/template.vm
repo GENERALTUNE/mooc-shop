@@ -1,7 +1,7 @@
 #set( $layout = "template.vm" )
 #set( $page_title = "Velocity 示例页面")
 #define($screen_content)
-this is buisin content
+<footer></footer>
 #end
 <!DOCTYPE html>
 <html lang="en" >
@@ -13,26 +13,33 @@ this is buisin content
 <body>
     #parse('/WEB-INF/content/com/nav.vm')
     <div class="container-fluid">
-        <form>
+        <form class="form-horizontal">
             <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                <div class="col-sm-8">
+                    <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                </div>
             </div>
             <div class="form-group">
-                <label for="exampleInputFile">File input</label>
-                <input type="file" id="exampleInputFile">
-                <p class="help-block">Example block-level help text here.</p>
+                <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                <div class="col-sm-8">
+                    <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                </div>
             </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox"> Check me out
-                </label>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-8">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> Remember me
+                        </label>
+                    </div>
+                </div>
             </div>
-            <button type="submit" class="btn btn-default">Submit</button>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-8">
+                    <button type="submit" class="btn btn-default">Sign in</button>
+                </div>
+            </div>
         </form>
         $screen_content
     </div>
