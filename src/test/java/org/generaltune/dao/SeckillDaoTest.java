@@ -1,8 +1,8 @@
 package org.generaltune.dao;
 
-import org.generaltune.hdao.EmployeeDao;
+
 import org.generaltune.entity.Seckill;
-import org.generaltune.model.Employee;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -27,8 +27,6 @@ public class SeckillDaoTest {
     @Resource
     private SeckillDao seckillDao;
 
-    @Resource
-    private EmployeeDao employeeDao;
 
     @Test
     public void testReduceNumber() throws Exception {
@@ -49,16 +47,7 @@ public class SeckillDaoTest {
          */
     }
 
-    @Test
-    public void testSave() throws Exception{
-        Employee employee = new Employee();
-        employee.setDesignation("中国上海");
-        employee.setFirstname("张飞");
-        employee.setLastname("燕人张翼德");
-        employee.setSalary(234);
 
-        employeeDao.save(employee);
-    }
 
     @Test
     public void testQueryAll() throws Exception {

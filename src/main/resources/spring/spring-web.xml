@@ -18,6 +18,10 @@
         1：加入对静态资源的处理：js，gif，png
         2：允许使用"/"做整体映射 -->
     <mvc:default-servlet-handler/>
+    <!-- 拦截器的配置-->
+    <mvc:interceptors>
+        <bean class="org.generaltune.web.interceptor.AuthInterceptor"></bean>
+    </mvc:interceptors>
 
     <!--3:配置jsp 显示ViewResolve-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -42,4 +46,5 @@
     <!--4：扫描web相关bean-->
 
     <context:component-scan base-package="org.generaltune.web"/>
+
 </beans>

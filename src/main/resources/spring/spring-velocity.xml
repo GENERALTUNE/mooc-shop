@@ -8,35 +8,70 @@
 
 
     <!-- velocity环境配置 -->
+
+    <bean id="velocityConfig" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+        <property name="configLocation" value="classpath:velocity.properties"/>
+        <property name="resourceLoaderPath" value="/,/WEB-INF/content/"/>
+    </bean>
+    <!--
+View resolvers can also be configured with ResourceBundles or XML files. If you need
+different view resolving based on Locale, you have to use the resource bundle resolver.
+-->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+        <property name="order" value="0"/>
+        <property name="cache" value="true"/>
+        <property name="prefix" value=""/>
+        <property name="suffix" value=".vm"/>
+        <property name="contentType"><value>text/html;charset=UTF-8</value></property>
+    </bean>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <!--
     This bean sets up the Velocity environment for us based on a root path for templates.
     Optionally, a properties file can be specified for more control over the Velocity
     environment, but the defaults are pretty sane for file based template loading.
     -->
-    <bean id="velocityConfig" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
-        <!-- velocity配置文件路径 -->
-        <property name="configLocation" value="classpath:velocity.properties"/>
-        <!-- velocity模板路径 -->
-        <property name="resourceLoaderPath" value="/,/WEB-INF/content/" />
-    </bean>
+    <!--<bean id="velocityConfig" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">-->
+        <!--&lt;!&ndash; velocity配置文件路径 &ndash;&gt;-->
+        <!--<property name="configLocation" value="classpath:velocity.properties"/>-->
+        <!--&lt;!&ndash; velocity模板路径 &ndash;&gt;-->
+        <!--<property name="resourceLoaderPath" value="/WEB-INF/content/" />-->
+    <!--</bean>-->
     <!-- velocity视图解析器 -->
     <!--
     View resolvers can also be configured with ResourceBundles or XML files. If you need
     different view resolving based on Locale, you have to use the resource bundle resolver.
     -->
-    <bean id="velocityViewResolver" class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver">
-        <property name="order" value="0"/>
-        <property name="contentType" value="text/html;charset=UTF-8"/>
-        <property name="cache" value="true"/>
-        <property name="prefix" value="" />
-        <property name="suffix" value=".vm" />
-        <property name="layoutUrl" value="layout/default.vm"/>
-        <property name="exposeSpringMacroHelpers" value="true" />
-        <property name="dateToolAttribute" value="dateTool"/>
-        <property name="numberToolAttribute" value="numberTool"/>
-        <!--<property name="toolboxConfigLocation" >-->
-            <!--<value>/WEB-INF/classes/velocity-toolbox.xml</value>-->
-        <!--</property>-->
-    </bean>
+    <!--<bean id="velocityViewResolver" class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver">-->
+        <!--<property name="order" value="0"/>-->
+        <!--<property name="contentType" value="text/html;charset=UTF-8"/>-->
+        <!--<property name="cache" value="true"/>-->
+        <!--<property name="prefix" value="" />-->
+        <!--<property name="suffix" value=".vm" />-->
+        <!--<property name="layoutUrl" value="layout/default.vm"/>-->
+        <!--<property name="exposeSpringMacroHelpers" value="true" />-->
+        <!--<property name="dateToolAttribute" value="dateTool"/>-->
+        <!--<property name="numberToolAttribute" value="numberTool"/>-->
+        <!--&lt;!&ndash;<property name="toolboxConfigLocation" >&ndash;&gt;-->
+            <!--&lt;!&ndash;<value>/WEB-INF/classes/velocity-toolbox.xml</value>&ndash;&gt;-->
+        <!--&lt;!&ndash;</property>&ndash;&gt;-->
+    <!--</bean>-->
 
 </beans>

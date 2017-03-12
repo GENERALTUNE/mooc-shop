@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.generaltune.dao.UserDao" >
+    <!--<update id="reduceNumber">-->
+        <!--update seckill-->
+        <!--set number = number - 1-->
+        <!--where seckill_id = #{seckillId}-->
+        <!--and start_time &lt;=  #{killTime}-->
+        <!--and end_time &gt;= #{killTime}-->
+        <!--and number &gt; 0;-->
+    <!--</update>-->
+    <update id="update">
+        update USER
+        set username = #{username},
+        name = #{name},
+        description = #{description},
+        email = #{email},
+        password = #{password},
+        status = #{status},
+        region = #{region},
+        type = #{type},
+        updatetime = #{updatetime},
+        birthday = #{birthday},
+        version = #{version}
+
+        where id = #{id}
+    </update>
+    <select id="queryById" resultType="User" parameterType="long">
+        select id, username, name, password, description, phone, email, status, region, type,updatetime, version, createtime, birthday
+        from user
+        where id = #{Id}
+    </select>
+    <select id="queryByUsername" resultType="User" parameterType="String">
+        select id, username, name, password, description, phone, email, status, region, type,updatetime, version, createtime, birthday
+        from user
+        where username = #{username}
+    </select>
+
+    <delete id="deleteById" parameterType="long">
+        delete from user
+        where id = #{Id}
+    </delete>
+
+    <select id="queryAll" resultType="User">
+        select id, username, name, password, description, phone, email, status, region, type,updatetime, version, createtime, birthday
+        from user
+        order by createtime desc
+        limit #{offset}, #{limit}
+    </select>
+    <insert id="insertUser" >
+        insert into user(username, name, createtime, updatetime, password, birthday, type, status, region, phone, email, description, version)
+        values(#{username}, #{name}, #{createtime}, #{updatetime}, #{password}, #{birthday}, #{type}, #{status}, #{region}, #{phone}, #{email}, #{description}, #{version})
+    </insert>
+</mapper>
