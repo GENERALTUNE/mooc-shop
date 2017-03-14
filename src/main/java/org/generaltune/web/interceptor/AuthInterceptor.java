@@ -2,6 +2,8 @@ package org.generaltune.web.interceptor;
 
 import org.generaltune.entity.User;
 import org.generaltune.service.UserService;
+import org.generaltune.util.SSOUtils;
+import org.generaltune.util.StringUtil;
 import org.generaltune.web.base.DefaultAction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -71,6 +73,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 //            CacheManager cacheManager = (CacheManager) ApplicationContextUtils.getBean(CacheManager.class);
 //            Cache cache = cacheManager.getObjectCache(Constants.CACHE_AUTH);
             DefaultAction defaultAction = null;
+            boolean isLogin = false;
 //            boolean isOuter = isOuter(request);
 
             if (controller instanceof  DefaultAction) {
@@ -80,14 +83,25 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 
             // not require auth and it's not extends the default action
 //            if (authRedirect == null || authRedirect.validate() == false) {
-//                if (defaultAction == null) {
-//                    return true;
-//                }
+                if (defaultAction == null) {
+
+                    return true;
+                }
 //            }
 
             if (defaultAction != null) {
+                String url = request.getRequestURI();
+//                StringBuffer ur = request.getRequestURL();
 //                user = defaultAction.getUser();
+                //登录页面不校验！
+                if (url.equals("/login") || url.equals("/register")){
+                    return  true;
+                }
 //                boolean isLogin = defaultAction.isLogin(request, response, isOuter);
+                String username = SSOUtils.getSsoUsername(request);
+                if(username != null) {
+                    isLogin = true;
+                }
 
                 // the cookie auth passed and not set authentication
 //                if (isLogin && user.getId() == null) {
@@ -104,12 +118,13 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 //                }
 
                 // have logined
-//                if (isLogin) {
+                if (isLogin) {
 //                    setUserAuth(defaultAction, user, cache);
-//                    return true;
-//                }
+                    return true;
+                }
 
-                logger.info("[action:preHandle][controller:{}][request failed:{}]", controller, "user not login.");
+//                logger.info("[action:preHandle][controller:{}][request failed:{}]", controller, "user not login.");
+                response.sendRedirect("/index.jsp");
 
                 // validate failed
 //                if (authRedirect != null && authRedirect.resultType() == ResultTypeEnum.JSON) {
@@ -123,7 +138,8 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 //                }
 
             }
-            return false;
+//            return false;
+            return true;
         }
 
         return true;

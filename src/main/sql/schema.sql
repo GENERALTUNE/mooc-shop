@@ -3,7 +3,33 @@
 CREATE DATABASE myshop;
 -- 使用数据库
 use myshop;
+--创建用户数据库表
+
+CREATE TABLE IF NOT EXISTS `user` (
+`uid` bigint NOT NULL AUTO_INCREMENT COMMENT '用户UID',
+`name` VARCHAR(255) NOT NULL COMMENT '用户名',
+`username`  VARCHAR(255) NOT NULL COMMENT '用户账号',
+`password` VARCHAR(255) NOT NULL COMMENT '密码',
+`email` VARCHAR(255) NOT NULL COMMENT '邮箱',
+`phone` bigint NOT NULL  COMMENT '电话',
+`description` VARCHAR(255) NOT NULL COMMENT '个人简介',
+`createtime` TIMESTAMP NOT NULL COMMENT '创建时间',
+`updatetime` TIMESTAMP NOT NULL COMMENT '修改时间',
+`birthday` TIMESTAMP NOT NULL COMMENT '出生日期',
+`region` SMALLINT(6) DEFAULT '0' COMMENT '地区',
+`status`INT(11) DEFAULT '0' COMMENT '状态',
+`type`  VARCHAR(255) NOT NULL COMMENT '用户类型',
+`version` bigint   COMMENT '版本',
+  PRIMARY KEY (uid),
+  key idx_updatetime(updatetime),
+  key idx_uid(uid),
+  key idx_createtime(createtime)
+)ENGINE=InnoDB AUTO_INCREMENT=1000000 DEFAULT CHARSET=utf8 COMMENT='用户表';
+
+
+
 --创建秒杀库存表
+
 CREATE TABLE seckill(
   `seckill_id` bigint NOT NULL AUTO_INCREMENT COMMENT '商品库存id',
   `name` varchar(120) NOT NULL COMMENT '商品名称',

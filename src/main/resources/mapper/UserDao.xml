@@ -26,26 +26,26 @@
         birthday = #{birthday},
         version = #{version}
 
-        where id = #{id}
+        where uid = #{id}
     </update>
     <select id="queryById" resultType="User" parameterType="long">
-        select id, username, name, password, description, phone, email, status, region, type,updatetime, version, createtime, birthday
+        select uid, username, name, password, description, phone, email, status, region, type,updatetime, version, createtime, birthday
         from user
-        where id = #{Id}
+        where uid = #{Id}
     </select>
     <select id="queryByUsername" resultType="User" parameterType="String">
-        select id, username, name, password, description, phone, email, status, region, type,updatetime, version, createtime, birthday
+        select uid, username, name, password, description, phone, email, status, region, type,updatetime, version, createtime, birthday
         from user
         where username = #{username}
     </select>
 
     <delete id="deleteById" parameterType="long">
         delete from user
-        where id = #{Id}
+        where uid = #{Id}
     </delete>
 
     <select id="queryAll" resultType="User">
-        select id, username, name, password, description, phone, email, status, region, type,updatetime, version, createtime, birthday
+        select uid, username, name, password, description, phone, email, status, region, type,updatetime, version, createtime, birthday
         from user
         order by createtime desc
         limit #{offset}, #{limit}

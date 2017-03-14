@@ -1,6 +1,7 @@
 package org.generaltune.util;
 
 import org.apache.commons.codec.binary.Base64;
+import org.generaltune.constants.Constants;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -12,9 +13,11 @@ import java.security.NoSuchAlgorithmException;
 /**
  * Created by zhumin on 2017/3/12.
  */
-public class SOOUtils {
-    private final static String LEGO_USERID_COOKIE_KEY = "L00001";   //cookie name
-    private final static String LEGO_USERVALIDATE_COOKIE_KEY = "V00001";   //cookie name
+public class SSOUtils {
+
+
+    private final static String SHOP_USERID_COOKIE_KEY = "L00001";   //cookie name
+    private final static String SHOP_USERVALIDATE_COOKIE_KEY = "V00001";   //cookie name
     private final static String COOKIE_ENCODE_KEY = "@#$fde!23^&%56&&%%$$";  //MD5 key
     private final static long DEFAULT_VALID_TIME = 3 * 24 * 60 * 60 * 1000; //3天,默认有效期
 
@@ -56,7 +59,7 @@ public class SOOUtils {
             validTime = DEFAULT_VALID_TIME;
         }
         String cookie = makeCookie(request);
-        setCookie(request, response, LEGO_USERVALIDATE_COOKIE_KEY, cookie, validTime.intValue() / 1000, true);
+        setCookie(request, response, SHOP_USERVALIDATE_COOKIE_KEY, cookie, validTime.intValue() / 1000, true);
     }
 
     private static String makeCookie(HttpServletRequest request) {
@@ -87,7 +90,7 @@ public class SOOUtils {
         //3.重新设置cookie
 //        deleteCookie(request,response,LEGO_USERID_COOKIE_KEY,true);
 //        setCookie(request,response,LEGO_USERID_COOKIE_KEY,cookie,validTime / 1000,true);
-        addHttpOnly(request, response, LEGO_USERID_COOKIE_KEY, cookie, validTime / 1000, true);
+        addHttpOnly(request, response, SHOP_USERID_COOKIE_KEY, cookie, validTime / 1000, true);
     }
 
     /**
@@ -98,7 +101,7 @@ public class SOOUtils {
      * @param response
      */
     public static void deleteSsoTicket(HttpServletRequest request, HttpServletResponse response) {
-        deleteCookie(request, response, LEGO_USERID_COOKIE_KEY, true);
+        deleteCookie(request, response, SHOP_USERID_COOKIE_KEY, true);
         // deleteCookie(request, response, Constants.AUTH_COOKIE_KEY, true);
     }
 
@@ -119,7 +122,7 @@ public class SOOUtils {
         //2.计算ticket
         String cookie = genTicket(username, validTime);
         //3.重新设置cookie
-        addHttpOnly(request, response, LEGO_USERID_COOKIE_KEY, cookie, validTime / 1000, true);
+        addHttpOnly(request, response, SHOP_USERID_COOKIE_KEY, cookie, validTime / 1000, true);
     }
 
     /**
@@ -192,9 +195,9 @@ public class SOOUtils {
      */
     private static String getTicket(HttpServletRequest request) {
         // 支持从参数中取L00001，如果没有则从Cookie中取
-        String cookieKey = request.getParameter(LEGO_USERID_COOKIE_KEY);
+        String cookieKey = request.getParameter(SHOP_USERID_COOKIE_KEY);
         if (cookieKey == null || cookieKey.trim().length() == 0) {
-            cookieKey = getCookieValue(request, LEGO_USERVALIDATE_COOKIE_KEY);
+            cookieKey = getCookieValue(request, SHOP_USERVALIDATE_COOKIE_KEY);
         }
         return cookieKey;
         //return getCookieValue(request, LEGO_USERID_COOKIE_KEY);
@@ -207,9 +210,9 @@ public class SOOUtils {
      * @return
      */
     private static String getValidateCookie(HttpServletRequest request) {
-        String P00001 = request.getParameter(LEGO_USERVALIDATE_COOKIE_KEY);
+        String P00001 = request.getParameter(SHOP_USERVALIDATE_COOKIE_KEY);
         if (P00001 == null || P00001.trim().length() == 0) {
-            P00001 = getCookieValue(request, LEGO_USERVALIDATE_COOKIE_KEY);
+            P00001 = getCookieValue(request, SHOP_USERVALIDATE_COOKIE_KEY);
         }
         return P00001;
     }

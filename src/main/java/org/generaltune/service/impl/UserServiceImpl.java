@@ -41,6 +41,6 @@ public class UserServiceImpl implements UserService{
     }
 
     public int updateUser(User user) {
-        return  userDao.update(user.getId(),user.getUsername(),user.getName(),user.getUpdatetime(),user.getPassword(),user.getBirthday(),user.getType(),user.getStatus(),user.getRegion(),user.getPhone(),user.getDescripiton(),user.getEmail(),user.getVersion());
+        return  userDao.update(user.getUid(),user.getUsername(),user.getName(),user.getUpdatetime(),user.getPassword(),user.getBirthday(),user.getType(),user.getStatus(),user.getRegion(),user.getPhone(),user.getDescripiton(),user.getEmail(),user.getVersion());
     }
 }

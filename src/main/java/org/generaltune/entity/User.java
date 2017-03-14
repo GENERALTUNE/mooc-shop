@@ -6,7 +6,7 @@ import java.util.Date;
  * Created by zhumin on 2017/3/9.
  */
 public class User {
-    private long id;
+    private long uid;
     private String name;
     private String username;
     private String password;
@@ -21,12 +21,12 @@ public class User {
     private Date birthday;
     private short region;
 
-    public long getId() {
-        return id;
+    public long getUid() {
+        return uid;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setUid(long id) {
+        this.uid = uid;
     }
 
     public String getName() {
@@ -136,7 +136,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "uid=" + uid +
                 ", name='" + name + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
