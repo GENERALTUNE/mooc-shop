@@ -21,6 +21,11 @@
         <property name="dataSource" ref="dataSource" />
     </bean>
 
+    <!--缓存-->
+    <bean id="ehcache"
+          class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+        <property name="configLocation" value="classpath:ehcache.xml"></property>
+    </bean>
     <!--配置基于注解的声明式事务
         默认使用注解来管理事务
     -->

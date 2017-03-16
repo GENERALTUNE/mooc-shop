@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="ehcache.xsd"
+         updateCheck="false" monitoring="autodetect"
+         dynamicConfig="true">
+
+    <diskStore path="java.io.tmpdir" />
+
+    <!-- DefaultCache setting. -->
+    <defaultCache eternal="false"
+                  overflowToDisk="false"
+                  diskPersistent="false"
+                  timeToLiveSeconds="36000"
+                  timeToIdleSeconds="36000"
+                  maxElementsInMemory="10000"
+                  memoryStoreEvictionPolicy="LRU"/>
+
+    <!-- Special objects setting. -->
+    <!-- Refresh sysParamCache every hour. -->
+    <cache name="sysParamCache"
+           overflowToDisk="false"
+           eternal="false"
+           diskPersistent="false"
+           timeToLiveSeconds="36000"
+           timeToIdleSeconds="36000"
+           maxElementsInMemory="10000"
+           memoryStoreEvictionPolicy="LRU"/>
+</ehcache>
