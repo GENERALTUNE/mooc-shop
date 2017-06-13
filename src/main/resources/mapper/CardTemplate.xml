@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.generaltune.dao.CardTemplateDao" >
+
+    <select id="queryByCardId" resultType="CardTemplate" parameterType="long">
+        select * from operation_resource_cardtemplate  where card_id = #{cardId}
+    </select>
+
+    <delete id="deleteByCardId" parameterType="long">
+        delete from operation_resource_cardtemplate
+        where card_id = #{cardId}
+    </delete>
+
+    <select id="queryAll" resultType="CardTemplate">
+        select *
+        from operation_resource_cardtemplate
+        order by id  ${orderType}
+        limit #{offset}, #{limit}
+    </select>
+    <insert id="insertCardTemplate" >
+        insert into operation_resource_cardtemplate(card_id, template_name,card_type, card_img_url, json_code, json_code_draft,platform, status, create_user, create_time, update_user,update_time, publish_state)
+        values(#{cardId}, #{templateName}, #{cardType},#{cardImgUrl},#{jsonCode}, #{jsonCodeDraft}, #{platform}, #{status}, #{createUser}, #{createTime}, #{updateUser}, #{updateTime}, #{publishState})
+    </insert>
+</mapper>
