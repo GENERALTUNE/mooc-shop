@@ -1,5 +1,6 @@
 package org.generaltune.web.Resource;
 
+import com.alibaba.fastjson.JSON;
 import org.generaltune.constants.Constants;
 import org.generaltune.service.ResourceService;
 import org.generaltune.web.base.DefaultAction;
@@ -40,7 +41,8 @@ public class ResourceAction extends DefaultAction {
     ) {
         String result;
         try {
-            result = getJSONResult(resourceService.queryByCardId(id), Constants.RESPONSE_SUCCESS , "获取成功！");
+
+            result = getJSONResult(JSON.toJSON(resourceService.queryByCardId(id)).toString(), Constants.RESPONSE_SUCCESS , "获取成功！");
         } catch (Exception e) {
             result = getJSONResult(null, Constants.RESPONSE_FAIL,"获取列表失败");
         }

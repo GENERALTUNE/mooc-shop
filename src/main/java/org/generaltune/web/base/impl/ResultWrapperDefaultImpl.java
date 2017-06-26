@@ -27,6 +27,8 @@ public class ResultWrapperDefaultImpl implements ResultWrapper {
         map.put("code", code);
         map.put("data", data);
         map.put("msg", message);
+
+
 //        String content = map.toJSONString();
         String content = map.toString();
         if (StringUtils.isNotBlank(callback)) {

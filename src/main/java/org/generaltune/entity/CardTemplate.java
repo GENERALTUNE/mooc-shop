@@ -135,7 +135,7 @@ public class CardTemplate {
 
     @Override
     public String toString() {
-        return "CardTemplate{" +
+        return "{" +
                 "id=" + id +
                 ", cardId=" + cardId +
                 ", templateName='" + templateName + '\'' +
