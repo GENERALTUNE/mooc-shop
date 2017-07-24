@@ -3,12 +3,15 @@ package org.generaltune.service.impl;
 import org.generaltune.dao.UserDao;
 import org.generaltune.entity.User;
 import org.generaltune.service.UserService;
+import org.generaltune.util.SSOUtils;
 import org.generaltune.util.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -32,6 +35,16 @@ public class UserServiceImpl implements UserService{
         String md5 = StringUtil.getMD5(password);
         return md5.equals(user.getPassword());
     }
+
+    public boolean isLogin(HttpServletRequest request, HttpServletResponse response) {
+        String username = SSOUtils.getSsoUsername(request);
+        User user = userDao.queryByUsername(username);
+        if (user == null) {
+            return  false;
+        }
+        return true;
+    }
+
     public User findByUsername(String username) {
         return userDao.queryByUsername(username);
     }

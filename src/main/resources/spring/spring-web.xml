@@ -21,9 +21,10 @@
     <!-- 拦截器的配置-->
     <mvc:interceptors>
         <mvc:interceptor>
-            <mvc:mapping path="/admin/*"/>
+            <!--<mvc:mapping path="/admin/*"/>-->
+            <mvc:mapping path="/*"/>
             <!--<mvc:exclude-mapping path="/admin/**"/>-->
-            <bean class="org.generaltune.web.interceptor.AuthInterceptor"></bean>
+            <bean class="org.generaltune.interceptor.AuthInterceptor"></bean>
         </mvc:interceptor>
     </mvc:interceptors>
 
@@ -34,6 +35,17 @@
         <property name="prefix" value="/jsp/" />
         <property name="suffix" value=".jsp" />
     </bean>
+
+    <!--<mvc:resources mapping="/scripts/**" location="/scripts/"/>-->
+    <!--<mvc:resources mapping="/static/**" location="/static/"/>-->
+    <!--<mvc:resources mapping="/css/**" location="/css/"/>-->
+    <!--<mvc:resources mapping="/error/**" location="/error/"/>-->
+
+    <!--<mvc:view-controller path="/error/nofile.jsp" view-name="/error/nofile"/>-->
+    <!--<mvc:view-controller path="/error/error.jsp" view-name="/error/error"/>-->
+    <!--<mvc:view-controller path="/error/forbidden.jsp" view-name="/error/forbidden"/>-->
+    <!--<mvc:view-controller path="/error/null.jsp" view-name="/error/null"/>-->
+    <!--<mvc:view-controller path="/uncaughtException" view-name="/error/error"/>-->
 
 
 
@@ -50,5 +62,6 @@
     <!--4：扫描web相关bean-->
 
     <context:component-scan base-package="org.generaltune.web"/>
+    <context:component-scan base-package="org.generaltune.interceptor"/>
 
 </beans>

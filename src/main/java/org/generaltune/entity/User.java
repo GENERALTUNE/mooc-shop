@@ -7,25 +7,25 @@ import java.util.Date;
  */
 public class User {
     private long uid;
-    private String name;
     private String username;
+    private String name;
     private String password;
-    private long version;
-    private String type;
-    private int status;
-    private String email;
     private String descripiton;
     private long phone;
-    private Date createtime;
-    private Date updatetime;
-    private Date birthday;
+    private String email;
+    private int status;
     private short region;
+    private String type;
+    private Date updatetime;
+    private long version;
+    private Date createtime;
+    private Date birthday;
 
     public long getUid() {
         return uid;
     }
 
-    public void setUid(long id) {
+    public void setUid(long uid) {
         this.uid = uid;
     }
 
@@ -137,18 +137,18 @@ public class User {
     public String toString() {
         return "User{" +
                 "uid=" + uid +
-                ", name='" + name + '\'' +
                 ", username='" + username + '\'' +
+                ", name='" + name + '\'' +
                 ", password='" + password + '\'' +
-                ", version=" + version +
-                ", type='" + type + '\'' +
-                ", region='" + region + '\'' +
-                ", status=" + status +
-                ", email='" + email + '\'' +
                 ", descripiton='" + descripiton + '\'' +
                 ", phone=" + phone +
-                ", createtime=" + createtime +
+                ", email='" + email + '\'' +
+                ", status=" + status +
+                ", region=" + region +
+                ", type='" + type + '\'' +
                 ", updatetime=" + updatetime +
+                ", version=" + version +
+                ", createtime=" + createtime +
                 ", birthday=" + birthday +
                 '}';
     }

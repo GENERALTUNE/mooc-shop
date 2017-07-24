@@ -1,9 +1,8 @@
-package org.generaltune.web.interceptor;
+package org.generaltune.interceptor;
 
 import org.generaltune.entity.User;
 import org.generaltune.service.UserService;
 import org.generaltune.util.SSOUtils;
-import org.generaltune.util.StringUtil;
 import org.generaltune.web.base.DefaultAction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,10 +14,6 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created by zhumin on 2017/3/12.
@@ -85,17 +80,18 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 //            if (authRedirect == null || authRedirect.validate() == false) {
                 if (defaultAction == null) {
 
-                    return true;
-                }
+                return true;
+            }
 //            }
 
             if (defaultAction != null) {
                 String url = request.getRequestURI();
 //                StringBuffer ur = request.getRequestURL();
-//                user = defaultAction.getUser();
+                user = defaultAction.getUser();
                 //登录页面不校验！
                 if (url.equals("/login") || url.equals("/register")){
-                    return  true;
+                        SSOUtils.deleteSsoTicket(request, response);
+                        return  true;
                 }
 //                boolean isLogin = defaultAction.isLogin(request, response, isOuter);
                 String username = SSOUtils.getSsoUsername(request);
@@ -120,11 +116,13 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
                 // have logined
                 if (isLogin) {
 //                    setUserAuth(defaultAction, user, cache);
+                    SSOUtils.refreshSsoTicket(request, response, username, null);
                     return true;
                 }
 
 //                logger.info("[action:preHandle][controller:{}][request failed:{}]", controller, "user not login.");
-                response.sendRedirect("/index.jsp");
+                response.sendRedirect(loginPath);
+                return false;
 
                 // validate failed
 //                if (authRedirect != null && authRedirect.resultType() == ResultTypeEnum.JSON) {

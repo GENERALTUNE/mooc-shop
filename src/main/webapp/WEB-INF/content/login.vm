@@ -13,6 +13,9 @@
     #parse('/WEB-INF/content/com/nav.vm')
 <div class="container-fluid">
     <form class="form-horizontal"action="/login" method="post">
+        #if($url)
+            <input name="url" type="hidden" value="$url">
+        #end
         <div class="form-group">
             <label for="" class="col-sm-2 control-label">用户名：</label>
             <div class="col-sm-8">
@@ -24,6 +27,11 @@
             <div class="col-sm-8">
                 <input type="password" name="password" class="form-control" placeholder="请输入密码">
             </div>
+            #if($!message.getMessage())
+                <div class="error-block-wrapper">
+                    <span class="error-block">$!message.getMessage()</span>
+                </div>
+            #end
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-8">

@@ -197,7 +197,7 @@ public class SSOUtils {
         // 支持从参数中取L00001，如果没有则从Cookie中取
         String cookieKey = request.getParameter(SHOP_USERID_COOKIE_KEY);
         if (cookieKey == null || cookieKey.trim().length() == 0) {
-            cookieKey = getCookieValue(request, SHOP_USERVALIDATE_COOKIE_KEY);
+            cookieKey = getCookieValue(request, SHOP_USERID_COOKIE_KEY);
         }
         return cookieKey;
         //return getCookieValue(request, LEGO_USERID_COOKIE_KEY);
