@@ -1,0 +1,54 @@
+#set( $page_title = "ztree 示例")
+#define($screen_content)
+<footer></footer>
+#end
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <!-- Bootstrap -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/zTreeStyle/zTreeStyle.css" rel="stylesheet">
+    <title>$!page_title</title>
+</head>
+<body>
+    #parse('/WEB-INF/content/com/nav.vm')
+
+    <div class="container">
+        <input id="keyName" value="" type="text" placeholder="请输入搜索关键字"
+               class="form-control" onkeyup="searchClear()" style="width: 180px;">
+
+        <ul id="treeDemo" class="ztree"></ul>
+    </div>
+
+    $screen_content
+</div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="/js/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/ztree/jquery.ztree.all-3.5.min.js"></script>
+
+
+<script type="text/javascript">
+    var zTreeObj;
+    // zTree 的参数配置，深入使用请参考 API 文档（setting 配置详解）
+    var setting = {};
+    // zTree 的数据属性，深入使用请参考 API 文档（zTreeNode 节点数据详解）
+    var zNodes = [
+        {name:"代办事项", open:true, children:[
+            {name:"办卡"}, {name:"开卡"}]},
+        {name:"商品分类", open:true, children:[
+            {name:"服装"}, {name:"食品"}]}
+    ];
+    $(document).ready(function(){
+        zTreeObj = $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+    });
+
+    window.searchClear = function() {
+        console.log('hello searchClear');
+    }
+
+
+</script>
+</body>
+</html>

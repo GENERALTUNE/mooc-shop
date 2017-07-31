@@ -32,7 +32,7 @@ public class SeckillServiceImpl implements SeckillService {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     //注入service依赖
-    @Autowired  // J2EE @Resource , @Inject
+    @Autowired  // J2EE @resource , @Inject
     private SeckillDao seckillDao;
 
     @Autowired

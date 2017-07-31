@@ -1,4 +1,4 @@
-package org.generaltune.web.Resource;
+package org.generaltune.web.resource;
 
 import com.alibaba.fastjson.JSON;
 import org.generaltune.constants.Constants;
