@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.Servlet;
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Created by zhumin on 2017/7/26.
  */
@@ -24,6 +27,7 @@ public class ZtreeAction extends BaseAction{
     public ModelAndView ztree() {
 
         ModelAndView mv = new ModelAndView();
+
 
 //        JSONArray channels = channelTools.getChannels();
 //        JSONObject pageAttributes = new JSONObject();
