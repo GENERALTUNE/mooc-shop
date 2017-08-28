@@ -13,6 +13,7 @@ import java.util.ResourceBundle;
 
 /**
  * Created by zhumin on 2017/5/15.
+ * java  实现获取配置信息到java对象的转换
  */
 public class TestProperty {
     @Test
