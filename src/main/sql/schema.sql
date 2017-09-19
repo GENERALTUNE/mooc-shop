@@ -4,7 +4,6 @@ CREATE DATABASE myshop;
 -- 使用数据库
 use myshop;
 --创建用户数据库表
-
 CREATE TABLE IF NOT EXISTS `user` (
 `uid` bigint NOT NULL AUTO_INCREMENT COMMENT '用户UID',
 `name` VARCHAR(255) NOT NULL COMMENT '用户名',
@@ -13,9 +12,9 @@ CREATE TABLE IF NOT EXISTS `user` (
 `email` VARCHAR(255) NOT NULL COMMENT '邮箱',
 `phone` bigint NOT NULL  COMMENT '电话',
 `description` VARCHAR(255) NOT NULL COMMENT '个人简介',
-`createtime` TIMESTAMP NOT NULL COMMENT '创建时间',
-`updatetime` TIMESTAMP NOT NULL COMMENT '修改时间',
-`birthday` TIMESTAMP NOT NULL COMMENT '出生日期',
+`createtime` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+`updatetime` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
+`birthday` TIMESTAMP NOT NULL DEFAULT  CURRENT_TIMESTAMP COMMENT '出生日期',
 `region` SMALLINT(6) DEFAULT '0' COMMENT '地区',
 `status`INT(11) DEFAULT '0' COMMENT '状态',
 `type`  VARCHAR(255) NOT NULL COMMENT '用户类型',
@@ -34,8 +33,8 @@ CREATE TABLE seckill(
   `seckill_id` bigint NOT NULL AUTO_INCREMENT COMMENT '商品库存id',
   `name` varchar(120) NOT NULL COMMENT '商品名称',
   `number` int NOT NULL COMMENT '库存数量',
-  `start_time` TIMESTAMP NOT NULL COMMENT '秒杀开始时间',
-  `end_time` TIMESTAMP NOT NULL COMMENT '秒杀结束时间',
+  `start_time` TIMESTAMP NOT NULL DEFAULT  CURRENT_TIMESTAMP COMMENT '秒杀开始时间',
+  `end_time` TIMESTAMP NOT NULL DEFAULT  CURRENT_TIMESTAMP COMMENT '秒杀结束时间',
   `create_time` TIMESTAMP NOT NULL DEFAULT  CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (seckill_id),
   key idx_start_time(start_time),
